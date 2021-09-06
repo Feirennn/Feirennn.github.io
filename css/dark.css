@@ -1,0 +1,82 @@
+html { overflow:  hidden; }
+body {
+    background-color: rgb(90, 89, 89);
+}
+* {
+    color: rgb(228, 229, 231);
+    font-weight:bold;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.header {
+    position: absolute;
+    top:-1%;
+    left: 4.5%;
+    right: 4.5%;
+    background-color: rgb(125, 126, 128);
+    border:1px solid white;
+    border-radius: 12px ;
+}
+.da{
+    border: 0px;
+    margin-left: 4%;
+    background-color: rgb(125, 126, 128);
+}
+.but {
+    line-height: 80px;
+    margin-top: 0.6%;
+    padding-bottom: 1%;
+    background-color: rgb(125, 126, 128);
+    border: 0px;
+    border-right: 2px solid white;
+    border-radius: 0px;
+}
+.but:hover{
+    background-color: rgb(187, 190, 194);
+}
+.but:active{
+    background-color: rgb(208, 211, 218);
+}
+.mainnn {
+    position: absolute;
+    top:15%;
+    left: 4.5%;
+    right: 4.5%;
+    bottom: -1%;
+    background-color: rgb(90, 89, 89);
+    border: 1px solid white;
+    border-radius: 12px;
+}
+.but1 {
+    line-height: 80px;
+    margin-top: 0.6%;
+    padding-bottom: 1%;
+    background-color: rgb(125, 126, 128);
+    border: 0px;
+    border-right: 2px solid white;
+    border-radius: 0px;
+}
+.but1:hover{
+    background: #03001e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+.but1:active{
+    background-color: rgb(208, 211, 218);
+}
+.but0 {
+    line-height: 80px;
+    margin-top: 0.6%;
+    padding-bottom: 1%;
+    background-color: rgb(125, 126, 128);
+    border: 0px;
+    border-radius: 0px;
+}
+.but0:hover{
+    background-color: rgb(187, 190, 194);
+}
+.but0:active{
+    background-color: rgb(208, 211, 218);
+}
