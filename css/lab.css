@@ -1,0 +1,11 @@
+table {
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 75%; /* Ширина таблицы */
+   }
+.screen {
+    margin: 2%;
+}
+img{
+    border: 1px solid black;
+    border-radius: 15px;
+}
