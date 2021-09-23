@@ -1,6 +1,10 @@
+body{
+    background-color: #8995A1;
+}
 table {
-    table-layout: fixed; /* Фиксированная ширина ячеек */
-    width: 75%; /* Ширина таблицы */
+    table-layout: fixed; 
+    width: 75%; 
+    background: #ffffff;
    }
 .screen {
     margin: 2%;
