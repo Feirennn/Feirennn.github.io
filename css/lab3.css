@@ -1,0 +1,102 @@
+body {
+    background-color: #8995A1;
+}
+* {
+    font-weight:bold;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.header{
+    background-color: #fff;
+    margin: 1%;
+    height: 80px;;
+    max-height: 5%;
+    overflow: hidden;
+    text-align: center;
+}
+.menu{
+    background-color: #fff;
+    margin: 1%;
+    height: 80px;;
+    max-height: 5%;
+    overflow: hidden;
+    text-align: center;
+}
+.second-menu{
+    background-color: #fff;
+    margin: 1%;
+    height: 80px;
+    max-height: 5%;
+    overflow: hidden;
+    text-align: center;
+}
+.main-info{
+    margin: 1%;
+    width: 1px;
+    height: 630px;
+    overflow: hidden;
+    text-align: center;
+}
+@media screen and (min-width: 1280px) {
+    div p{
+        font-size: 40px;
+        margin-top: 17px;
+        margin-bottom: 17px;
+    } 
+    .left-block{
+        background-color: #fff;
+        position: absolute;
+        width: 35.859375%;
+        height: 145.5px;
+    }
+    .right-block{
+        background-color: #fff;
+        position: absolute;
+        left: 38.4375%;
+        width: 35.859375%;
+        height: 145.5px;
+    } 
+    .right-info{
+        background-color: #fff;
+        position: absolute;
+        left: 75.46875%;
+        width: 23.125%;
+        height: 630px;
+    }
+}
+@media screen and (max-width: 1279px) {
+    div p{
+        font-size: 28px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    } 
+    .left-block{
+        background-color: #fff;
+        position: absolute;
+        width: 35.859375%;
+        height: 145.5px;
+    }
+    .right-block{
+        background-color: #fff;
+        position: absolute;
+        left: 39.8375%;
+        width: 35.859375%;
+        height: 145.5px;
+    }  
+    .right-info{
+        background-color: #fff;
+        position: absolute;
+        left: 77.46875%;
+        width: 21.125%;
+        height: 630px;
+    }
+}
+.str{
+    margin-top: 161.5px;
+}
+.str1{
+    margin-top: 323px;
+}
+.str2{
+    margin-top:484.5px;
+}
