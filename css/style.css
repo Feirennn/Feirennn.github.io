@@ -52,10 +52,12 @@ header #logo a
     text-transform: uppercase;
     letter-spacing: 3px;
     border-radius: 25px;
+    transition: .3s;
 }
 header #logo a:hover
 {
     background: aquamarine;
+    letter-spacing: 6px;
     color: #2b1055;
 }
 header ul
@@ -75,6 +77,7 @@ header ul li a
     padding: 6px 15px;
     color: #fff;
     border-radius: 15px;
+    transition: .3s;
 }
 header ul li a:hover,
 header ul li a.active
