@@ -99,6 +99,7 @@ header ul li button:hover{
 	border-right: 200px solid transparent;
 	border-bottom: 400px solid whitesmoke;
 	position: relative;
+	box-shadow: 0 0 25px rgba(0,0,0,0.8);
 }
 #star:after {
 	width: 0;
@@ -110,4 +111,5 @@ header ul li button:hover{
 	content: "";
 	top: 120px;
 	left: -200px;
+	box-shadow: 0 0 25px rgba(0,0,0,0.8);
 }
