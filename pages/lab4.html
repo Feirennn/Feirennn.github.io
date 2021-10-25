@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='ru'>
+    <head>
+        <title>Завдання 4</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/lab4.css" id='style'>
+        <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+        <link rel="manifest" href="../favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <header>
+            <a href="../Shytka.jpg" target="_blank"><p>Кафедра інформатики</p></a>
+            <ul>
+                <li>
+                    <a class="web" href="http://ivm.krnu.org/" target="_blank" title="Перейти на веб-сайт кафедры">Сайт кафедры</a>
+                </li>
+                <li>
+                    <button id='but'>Отобразить фигуру</button>
+                </li>
+            </ul>
+        </header>
+        <div id="figure" style="display: none;">
+            <div id="star"></div>
+        </div>
+        <script>
+            var fig = document.getElementById('figure')
+            var but = document.getElementById('but')
+
+            but.addEventListener("click", function(e) {
+                if (fig.style.display ==="none"){
+                    if (confirm("Показать фигуру?")){
+                    fig.style.display = "flex"
+                    but.textContent="Убрать фигуру"
+                }}
+                else{
+                    if (confirm("Убрать фигуру?")){
+                    fig.style.display = "none"
+                    but.textContent="Отобразить фигуру"
+                }
+                }
+            })
+            
+        </script>
+    </body>
+</html>
