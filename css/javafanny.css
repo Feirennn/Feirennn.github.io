@@ -1,0 +1,58 @@
+.RGB{
+    position: relative;
+    top:250px;
+    left: 600px;
+    border: 1px solid black;
+    padding-top: 50px;
+    padding-left: 50px;
+    width: 775px;
+    height: 550px;
+    border-radius: 40px;
+    background-color: #bcfdd7;
+}
+.slider{
+    position: relative;
+    background: rgb(201, 201, 201);
+    border-radius: 8px;
+    padding-left: 15px;
+    width: 650px;
+    height: 30px;
+    margin: 15px;
+}
+input[id|="volume"]{
+    position: relative;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0;
+    text-align: center;
+    width: 50px;
+}
+.fad{
+    position: relative;
+    margin-left: 15px;
+    margin-top: 11px;
+    width: 530px;
+    height: 8px;
+    background: black;
+    border-radius: 15px;
+    -webkit-appearance: none;
+    outline: none;
+}
+.fad::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 7px black;
+}
+
+#RGBshar{
+    position: relative;
+    left: 175px;
+    width: 300px;
+    height: 300px;
+    border: 3px solid black;
+    border-radius: 50%;
+
+}
