@@ -1,0 +1,35 @@
+.Calc{
+    position: relative;
+    top:200px;
+    left: 31.25%;
+    border: 1px solid black;
+    padding-top: 50px;
+    width: 750px;
+    height: 300px;
+    border-radius: 40px;
+    background-color: #bcfdd7;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.Calc p{
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
+#num{
+    position: relative;
+    top: 20px;
+    left: 175px;
+    width: 400px;
+    height: 50px;
+    font-size: 48px;
+}
+.result{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.resultt{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
