@@ -23,7 +23,7 @@
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" href="../css/javafanny.css">
     </head>
-    <body style="min-height: 100vh;">
+    <body>
         <header>
             <li id="logo"><a href="../index.html">Feiren</a></li>
             <ul>
@@ -48,6 +48,7 @@
                 <input type="range" class="fad" id="fader-3" min="0" max="255" value="150" step="1" oninput="outputUpdate(value,3)">
             </div>
             <div id="RGBshar" style="background: rgb(150, 150, 150);"></div>
+            <p class="hex" align=center style="margin-right: 70px;">HTML(HEX) код кольору: #969696</p>
         </div>
 
         <script>
@@ -89,8 +90,37 @@
                 var output2 = document.getElementById('volume-2').value;
                 var output3 = document.getElementById('volume-3').value;
                 var rgb=document.querySelector("#RGBshar");
+                var hex = document.querySelector(".hex");
 
                 rgb.style.background="rgb("+output1+","+output2+","+output3+")";
+                hex.textContent = "HTML(HEX) код кольору: " + rgb2hex(output1,output2,output3);
+            }
+            function toHex(num){
+                var a=num/16 ^ 0;
+                var b=num-(a*16);
+                var sum="";
+                var time="";
+                if(a==10) a="A";
+                if(a==11) a="B";
+                if(a==12) a="C";
+                if(a==13) a="D";
+                if(a==14) a="E";
+                if(a==15) a="F";
+                if(b<10){sum=sum+a+b}
+                else{
+                if(b==10) sum=sum+a+"A";
+                if(b==11) sum=sum+a+"B";
+                if(b==12) sum=sum+a+"C";
+                if(b==13) sum=sum+a+"D";
+                if(b==14) sum=sum+a+"E";
+                if(b==15) sum=sum+a+"F";
+                }
+                return sum;
+            }
+            function rgb2hex(r,g,b){
+                var res='';
+                res="#"+toHex(r)+toHex(g)+toHex(b);
+                return res;
             }
         </script>
 
