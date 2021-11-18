@@ -1,0 +1,60 @@
+.all{
+    position: absolute;
+    top: 175px;
+    left: 5%;
+    width: 100%;
+    margin-left: -100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.all ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.all ul li{
+    list-style: none;
+    margin-left: 100px;
+}
+
+.avatar{
+    display: flex;
+    background: white;
+    width: 450px;
+    height: 431px;
+    border: 1px solid black;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px black;
+}
+
+.img{
+    width: 400px;
+    height: 362px;
+    border-radius: 40px;
+    background: url(../img/me.png) no-repeat center top;
+    transition: 0.5s;
+}
+.img:hover{
+    background: url(../img/ArtMe.png) no-repeat center top;
+}
+
+.ttext{
+    background: white;
+    width: 775px;
+    height: 500px;
+    max-width: 775px;
+    max-height: 500px;
+    border: 1px solid black;
+    border-radius: 40px;
+    box-shadow: 0 0 30px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text p {
+    font-size: 48px;
+    text-align: center;
+}
