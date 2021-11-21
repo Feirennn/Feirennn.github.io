@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Move</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    user-select: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+    body{background: #bcfdd7;overflow-x: hidden;}
+    canvas{
+      background: #fff;
+    border: 1px solid black;}
+    p{
+      margin-left: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="Triangle" class="Triangle">
+    <div class="Trian">
+        <canvas width="300" height="300" id="canvas" class="canvas"></canvas>
+        <p id="resTrian">Площадь триугольника: 0 кв.ед.</p>
+    </div>
+    <script>
+        var canvas, ctx, num = 0;
+        var box=[];
+        var dragok = false;
+        var startX;
+        var startY;
+        var offsetX = 10;
+        var offsetY = 10;  
+        function main()
+        {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+         
+        box.push({x:Rnd(250),y:Rnd(250),width:20,height:20,fill:"#000000",isDragging:false});
+        box.push({x:Rnd(250),y:Rnd(250),width:20,height:20,fill:"#000000",isDragging:false});
+        box.push({x:Rnd(250),y:Rnd(250),width:20,height:20,fill:"#000000",isDragging:false});
+        draw();
+        S(box[0],box[1],box[2]);
+
+         
+         canvas.onmousedown = myDown;
+         canvas.onmouseup = myUp;
+         canvas.onmousemove = myMove; 
+        }
+         
+        function myMove(e){
+           if (dragok)
+           {
+              var mx=parseInt(e.clientX-offsetX);
+              var my=parseInt(e.clientY-offsetY);
+              
+              var dx=mx-startX;
+              var dy=my-startY;
+              
+              for(var i=0;i<box.length;i++)
+              {
+                 if(box[i].isDragging==true)
+                 {
+                   box[i].x+=dx;
+                   box[i].y+=dy;
+                 }
+              }
+              draw();
+              startX=mx;
+              startY=my;
+           }
+        }
+         
+        function myUp(e)
+        {
+          dragok = false;
+           for(var i=0;i<box.length;i++){
+            box[i].isDragging=false;
+          }
+          S(box[0],box[1],box[2]);
+        }
+         
+        function myDown(e){
+           
+            var mx=parseInt(e.clientX-offsetX);
+            var my=parseInt(e.clientY-offsetY);
+            
+             dragok=true;
+             for(var i=0;i<box.length;i++){
+             
+                
+                if(mx>box[i].x && mx<box[i].x+box[i].width && my>box[i].y && my<box[i].y+box[i].height)
+                {
+                  box[i].isDragging=true;
+                }
+             }
+             startX=mx;
+             startY=my;
+        }
+         
+        function rect(r,f) 
+        {
+          ctx.fillStyle=r.fill;
+          ctx.fillRect(r.x,r.y,r.width,r.height);
+          ctx.fillStyle=f.fill;
+          ctx.beginPath();
+          ctx.lineWidth = 3;
+          ctx.moveTo(r.x+10,r.y+10);
+          ctx.lineTo(f.x+10,f.y+10);
+          ctx.stroke();
+        }
+         
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            rect(box[0],box[1]);
+            rect(box[1],box[2]);
+            rect(box[2],box[0]);
+        }
+        function S(a,b,c){
+          var S= (1/200)*Math.abs(((b.x-a.x)*(c.y-a.y)-(c.x-a.x)*(b.y-a.y)));
+          document.getElementById("resTrian").textContent="Площадь триугольника: "+S+"кв.ед.";
+        }
+        function Rnd(max) {
+          return Math.floor(Math.random() * max);
+        }
+        main();
+        </script>
+</div>
+</body>
+</html>

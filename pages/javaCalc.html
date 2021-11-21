@@ -22,8 +22,9 @@
         <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" href="../css/javacalc.css">
+        <link rel="stylesheet" href="../css/javafanny.css">
     </head>
-    <body>
+    <body style="min-height: 100vh;">
         <header>
             <li id="logo"><a href="../index.html">Feiren</a></li>
             <ul>
@@ -34,6 +35,114 @@
             </ul>
         </header>
         
+        <div class="menucalc">
+            <ul>
+                <li><a href="#" onclick="showDec()">Десятичное число в двоичное</a></li>
+                <li><a href="#" onclick="showColRGB()">RGB Круг</a></li>
+                <li><a href="#" onclick="showTriangle()">RGB Круг</a></li>
+            </ul>
+        </div>
+
+        <div id="Triangle" class="Triangle">
+            <div class="Trian">
+                <iframe src="Triangle.html" frameborder="0" width="312" height="500"></iframe>
+            </div>
+            
+        </div>
+
+        <div class="ColRGB" id="ColRGB">
+            <div class="RGB">
+                <div class="slider">R
+                    <input type="text" id="volume-1" value="150" oninput="aba(value,1)">
+                    <input type="range" class="fad" id="fader-1" min="0" max="255" value="150" step="1" oninput="outputUpdate(value,1)">
+                </div>
+                <div class="slider">G
+                    <input type="text" id="volume-2" value="150" oninput="aba(value,2)">
+                    <input type="range" class="fad" id="fader-2" min="0" max="255" value="150" step="1" oninput="outputUpdate(value,2)">
+                </div>
+                <div class="slider">B
+                    <input type="text" id="volume-3" value="150" oninput="aba(value,3)">
+                    <input type="range" class="fad" id="fader-3" min="0" max="255" value="150" step="1" oninput="outputUpdate(value,3)">
+                </div>
+                <div id="RGBshar" style="background: rgb(150, 150, 150);"></div>
+                <p class="hex" align=center style="margin-right: 70px;">HTML(HEX) код кольору: #969696</p>
+            </div>
+    
+            <script>
+                function outputUpdate(vol,num){
+                    if(num==1){
+                        var output = document.getElementById('volume-1');
+                    }
+                    if(num==2){
+                        var output = document.getElementById('volume-2');
+                    }
+                    if(num==3){
+                        var output = document.getElementById('volume-3');
+                    }
+                    output.value = vol;
+                    changeRBG()
+                }
+                function aba(vol,num){
+                    if(num==1){
+                        var output = document.getElementById('volume-1');
+                        var fader = document.getElementById("fader-1");
+                    }
+                    if(num==2){
+                        var output = document.getElementById('volume-2');
+                        var fader = document.getElementById("fader-2");
+                    }
+                    if(num==3){
+                        var output = document.getElementById('volume-3');
+                        var fader = document.getElementById("fader-3");
+                    }
+                    if(vol>255 || vol < 0){
+                        vol=0
+                        output.value = vol;
+                    }
+                    fader.value=vol
+                    changeRBG()
+                }
+                function changeRBG(){
+                    var output1 = document.getElementById('volume-1').value;
+                    var output2 = document.getElementById('volume-2').value;
+                    var output3 = document.getElementById('volume-3').value;
+                    var rgb=document.querySelector("#RGBshar");
+                    var hex = document.querySelector(".hex");
+    
+                    rgb.style.background="rgb("+output1+","+output2+","+output3+")";
+                    hex.textContent = "HTML(HEX) код кольору: " + rgb2hex(output1,output2,output3);
+                }
+                function toHex(num){
+                    var a=num/16 ^ 0;
+                    var b=num-(a*16);
+                    var sum="";
+                    var time="";
+                    if(a==10) a="A";
+                    if(a==11) a="B";
+                    if(a==12) a="C";
+                    if(a==13) a="D";
+                    if(a==14) a="E";
+                    if(a==15) a="F";
+                    if(b<10){sum=sum+a+b}
+                    else{
+                    if(b==10) sum=sum+a+"A";
+                    if(b==11) sum=sum+a+"B";
+                    if(b==12) sum=sum+a+"C";
+                    if(b==13) sum=sum+a+"D";
+                    if(b==14) sum=sum+a+"E";
+                    if(b==15) sum=sum+a+"F";
+                    }
+                    return sum;
+                }
+                function rgb2hex(r,g,b){
+                    var res='';
+                    res="#"+toHex(r)+toHex(g)+toHex(b);
+                    return res;
+                }
+            </script>
+        </div>
+
+        <div id="dec" class="DEC">
         <div class="Calc">
             <p>Калькулятор</p>
             <p>Десятичное число в двоичное</p>
@@ -47,8 +156,23 @@
             <input type="text" name="" id="num" oninput="Sec(value)">
             <p class="resultt">Результат:</p>
         </div>
-
+    </div>
         <script>
+            function showDec(){
+                document.getElementById("ColRGB").classList.remove('show');
+                document.getElementById("Triangle").classList.remove('show');
+                document.getElementById("dec").classList.toggle("show");
+            }
+            function showColRGB(){
+                document.getElementById("dec").classList.remove('show');
+                document.getElementById("Triangle").classList.remove('show');
+                document.getElementById("ColRGB").classList.toggle("show");
+            }
+            function showTriangle(){
+                document.getElementById("dec").classList.remove('show');
+                document.getElementById("ColRGB").classList.remove('show');
+                document.getElementById("Triangle").classList.toggle("show");
+            }
             function Dec(num){
                 var result = document.querySelector('.result')
                 res=''
@@ -69,6 +193,7 @@
                 }
                 result.textContent="Результат: "+sum;
             }
+            
         </script>
 
     </body>
