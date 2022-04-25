@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML-Parser</title>
+    <link rel="stylesheet" href="style.css">
+    <script category="text/javascript">
+        function loadXML(file) {
+         try { 
+         var req = new XMLHttpRequest();
+         req.open("GET", file, false);
+         req.send(null);
+         return req.responseXML;
+         }
+         catch (e) {
+        
+         try {
+         var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+         xmlDoc.async = false;
+         xmlDoc.load(file);
+         return xmlDoc;
+         }
+         catch (e) {
+         alert(e.message);
+         return null;
+         }
+         }
+        } 
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+         
+        $(window).scroll(function(){
+        if ($(this).scrollTop() > 800) {
+        $('.scrollup').fadeIn();
+        } else {
+        $('.scrollup').fadeOut();
+        }
+        });
+         
+        $('.scrollup').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 100);
+        return false;
+        });
+         
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <li id="logo"><a href="https://feirennn.github.io/">Feiren</a></li>
+        <ul>
+            <li><a href="http://математика.укр" class="active" target="_blank">Математика.укр</a></li>
+            <li><a href="https://feirennn.github.io/pages/about.html">Про меня</a></li>
+            <li><a href="https://feirennn.github.io/#labb">Лабораторные</a></li>
+            <li><a href="https://feirennn.github.io/#cont">Соц.сети</a></li>
+        </ul>
+    </header>
+
+    <div id="contents">
+    </div>
+
+    <footer>
+        <ul id="cont">
+            <li><a href="https://github.com/Feirennn" target="_blank"><img src="https://feirennn.github.io/img/Git.png" alt="">GitHub</a></li>
+            <li><a href="https://www.instagram.com/feirennn/" target="_blank"><img src="https://feirennn.github.io/img/inst.png" alt="">Instagram</a></li>
+            <li><a href="https://steamcommunity.com/id/Feiren-/" target="_blank"><img src="https://feirennn.github.io/img/steam.png" alt="">Steam</a></li>
+        </ul>
+    </footer>
+    <a href="#" class="scrollup">Наверх</a>
+    <script>
+        var games = loadXML("games.xml")
+        var conten = document.getElementById("contents")
+
+        index = 0;
+        var num = 1
+        var div_games = document.createElement('div')
+        div_games.id = "games-" + index
+        conten.appendChild(div_games)
+
+        for(var i = 0; i < games.getElementsByTagName("game").length; i++){
+
+            var name = "name-" + index;
+            var year = "year" + index;
+            var create = "create" + index;
+            var genre = "genre" + index;
+            var lang = "lang" + index;
+            var web = "web" + index;
+            var gamess = "games-" + index
+
+            if(num == 5){
+            var div_games = document.createElement('div')
+            div_games.id = "games-" + index
+            conten.appendChild(div_games)
+            num = 1
+            }      
+
+            let div_game = document.createElement('div')
+            div_game.id = "game"
+
+            let div_name = document.createElement('div')
+            div_name.id = "name-" + index
+            div_name.innerText = games.getElementsByTagName("name")[i].childNodes[0].nodeValue;
+            div_game.appendChild(div_name)
+
+            let div_year = document.createElement('div')
+            div_year.id = "year" + index
+            div_year.innerText = "Рік випуску: " + games.getElementsByTagName("year")[i].childNodes[0].nodeValue;
+            div_game.appendChild(div_year)
+
+            let div_create = document.createElement('div')
+            div_create.id = "create" + index
+            div_create.innerText = "Творець: " + games.getElementsByTagName("create")[i].childNodes[0].nodeValue;
+            div_game.appendChild(div_create)
+
+            let div_genre = document.createElement('div')
+            div_genre.id = "genre" + index
+            div_genre.innerText = "Жанр: " + games.getElementsByTagName("genre")[i].childNodes[0].nodeValue;
+            div_game.appendChild(div_genre)
+
+            let div_lang = document.createElement('div')
+            div_lang.id = "lang" + index
+            div_lang.innerText = "Написана мовою: " + games.getElementsByTagName("lang")[i].childNodes[0].nodeValue;
+            div_game.appendChild(div_lang)
+
+            let div_web = document.createElement('a')
+            div_web.id = "web" + index
+            div_web.href = games.getElementsByTagName("web")[i].childNodes[0].nodeValue;
+            div_web.target = "_blank"
+            div_web.innerText = "Веб сайт"
+            div_game.appendChild(div_web)
+
+            div_games.appendChild(div_game)
+
+            num++;
+            index++;
+        }
+    </script>
+</body>
+</html>

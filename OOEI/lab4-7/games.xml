@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<games>
+    <game>
+        <name>Counter-Strike: Global Offensive</name>
+        <year>2012</year>
+        <create>Valve Corporation</create>
+        <genre>Шутер від першої особи</genre>
+        <lang>С++</lang>
+        <web>https://blog.counter-strike.net/</web>
+    </game>
+    <game>
+        <name>Detroit: Become Human</name>
+        <year>2018</year>
+        <create>Quantic Dream</create>
+        <genre>Iнтерактивний фільм</genre>
+        <lang>C++</lang>
+        <web>https://www.quanticdream.com/en/detroit-become-human</web>
+    </game>
+    <game>
+        <name>Civilization IV</name>
+        <year>2005</year>
+        <create>Firaxis Games</create>
+        <genre>Глобальна стратегія</genre>
+        <lang>C#, Python</lang>
+        <web>https://2k.com/en-US/</web>
+    </game> 
+    <game>
+        <name>Metro Exodus</name>
+        <year>2019</year>
+        <create>4A Games</create>
+        <genre>Шутер від першої особи</genre>
+        <lang>С++</lang>
+        <web>https://www.metrothegame.com/en-gb/</web>
+    </game> 
+    <game>
+        <name>Dead Cells</name>
+        <year>2018</year>
+        <create>Motion Twin</create>
+        <genre>Roguelike</genre>
+        <lang>Haxe, Heaps</lang>
+        <web>https://dead-cells.com/</web>
+    </game> 
+    <game>
+        <name>Sekiro: Shadows Die Wwice</name>
+        <year>2019</year>
+        <create>FromSoftware</create>
+        <genre>Пригодницький бойовик</genre>
+        <lang>С++</lang>
+        <web>https://www.sekirothegame.com/</web>
+    </game> 
+    <game>
+        <name>Cuphead</name>
+        <year>2017</year>
+        <create>StudioMDHR Entertainment</create>
+        <genre>Платфо́рмер</genre>
+        <lang>C#</lang>
+        <web>http://www.cupheadgame.com/</web>
+    </game> 
+    <!-- Шаблон
+    <game>
+        <name> </name>
+        <year> </year>
+        <create> </create>
+        <genre> </genre>
+        <lang> </lang>
+        <web> </web>
+    </game> 
+    -->
+</games>
