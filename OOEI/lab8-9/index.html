@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="https://jaromvogel.com/js/lib/path-data-polyfill.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+         
+        $(window).scroll(function(){
+        if ($(this).scrollTop() > 800) {
+        $('.scrollup').fadeIn();
+        } else {
+        $('.scrollup').fadeOut();
+        }
+        });
+         
+        $('.scrollup').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 100);
+        return false;
+        });
+         
+        });
+    </script>
+    <title>SVG</title>
+</head>
+<body>
+	<header>
+        <li id="logo"><a href="https://feirennn.github.io/">Feiren</a></li>
+        <ul>
+            <li><a href="http://математика.укр" target="_blank">Математика.укр</a></li>
+            <li><a href="https://feirennn.github.io/pages/about.html">Про меня</a></li>
+            <li><a href="https://feirennn.github.io/#labb">Лабораторные</a></li>
+            <li><a href="https://feirennn.github.io/#cont">Соц.сети</a></li>
+        </ul>
+    </header>
+
+    <div class="app-container" ng-app="waveApp" ng-controller="waveCtrl">
+        <div class="graph-container">
+            <svg class="svg" width="300" height="300">
+                <path class="sine-wave" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M0,150"/>
+            </svg>
+        </div>
+		<div class="button play" ng-click="toggle_play()">
+			<svg width="60" height="40">
+				<path ng-show="!play" stroke="none" fill="white" d="M42,20 l-18,-10 v20 z" />
+				<path ng-show="play" stroke="white" fill="none" stroke-width="4" d="M25,11 v18 M35,11 v18" />
+			</svg>
+		</div>
+		<div class="reset" ng-click="reset(); updateGraph(); change_text();">По-умолчанию</div>
+		<div class="controll-menu">
+			<div>Частота</div>
+			<div class="button" ng-click="frequency_down()">
+				<svg width="60" height="40">
+					<path stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M18,20 l8,-8 M18,20 h22 M18,20 l8,8" />
+				</svg>
+			</div>
+			<span id="frequency_text" class="text">0.3</span>
+			<div class="button" ng-click="frequency_up()">
+				<svg width="60" height="40">
+					<path stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M42,20 l-8,-8 M42,20 h-22 M42,20 l-8,8" />
+				</svg>
+			</div>
+			<div>Амплитуда</div>
+			<div class="button" ng-click="amplitude_down()">
+				<svg width="60" height="40">
+					<path stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M18,20 l8,-8 M18,20 h22 M18,20 l8,8" />
+				</svg>
+			</div>
+			<span id="amplitude_text" class="text">1</span>
+			<div class="button" ng-click="amplitude_up()">
+				<svg width="60" height="40">
+					<path stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M42,20 l-8,-8 M42,20 h-22 M42,20 l-8,8" />
+				</svg>
+			</div>
+			<div>Скорость</div>
+			<div class="button" ng-click="increment_down()">
+				<svg width="60" height="40">
+					<path stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M18,20 l8,-8 M18,20 h22 M18,20 l8,8" />
+				</svg>
+			</div>
+			<span id="increment_text" class="text">5</span>
+			<div class="button" ng-click="increment_up()">
+				<svg width="60" height="40">
+					<path stroke="white" stroke-width="2" stroke-linecap="round" fill="none" d="M42,20 l-8,-8 M42,20 h-22 M42,20 l-8,8" />
+				</svg>
+			</div>
+		</div>
+    </div>
+
+	<footer>
+        <ul id="cont">
+            <li><a href="https://github.com/Feirennn" target="_blank"><img src="https://feirennn.github.io/img/Git.png" alt="">GitHub</a></li>
+            <li><a href="https://www.instagram.com/feirennn/" target="_blank"><img src="https://feirennn.github.io/img/inst.png" alt="">Instagram</a></li>
+            <li><a href="https://steamcommunity.com/id/Feiren-/" target="_blank"><img src="https://feirennn.github.io/img/steam.png" alt="">Steam</a></li>
+        </ul>
+    </footer>
+    <a href="#" class="scrollup">Наверх</a>
+    <script>
+    var app = angular.module('waveApp', []);
+
+    app.controller('waveCtrl', function($scope) {
+	
+	var path = $('.sine-wave');
+
+	$scope.x = 0;
+	$scope.offset = 0;
+    $scope.framerate = 60;
+
+	$scope.reset = function () {
+		$scope.frequency = 0.5;
+		$scope.amplitude = 1;
+		$scope.increment = 5;
+	};
+
+	$scope.reset();
+	
+	$scope.pathFunction = function (x) {
+		var result = (Math.sin(Math.sqrt(x*$scope.frequency)-$scope.offset))*x*(0.1 * $scope.amplitude);
+
+		return result;
+	};
+	
+	$scope.createGraph = function (wave) {
+		$scope.x = 0;
+		var data = [
+			{
+				'type': 'M',
+				'values': [0,150]
+			}
+		];
+		while ($scope.x < 300) {
+			point = {
+				x: $scope.x,
+				y: 150 - $scope.pathFunction($scope.x) 
+			};
+			data.push({
+				'type': 'L',
+				'values': [
+					point.x,
+					point.y
+				]
+			});
+			$scope.x += 1;
+		}
+		wave[0].setPathData(data);
+	};
+	
+	$scope.play = true;
+
+	$scope.animate = function () {
+		if ($scope.play === true) {
+			$scope.offset += ($scope.increment / $scope.framerate);
+			$scope.createGraph(path);
+			setTimeout(function () {
+				requestAnimationFrame($scope.animate);	
+			},(1000 / $scope.framerate));
+		}
+	}
+	requestAnimationFrame($scope.animate);
+	
+	$scope.toggle_play = function () {
+		$scope.play = !$scope.play;
+		if ($scope.play === true) {
+			$scope.animate();
+		}
+	};
+
+	$scope.change_text = function () {
+		let ftext = document.getElementById("frequency_text");
+		let atext = document.getElementById("amplitude_text");
+		let itext = document.getElementById("increment_text");
+		ftext.innerHTML = Math.round($scope.frequency * Math.pow(10, 2)) / Math.pow(10, 2); 
+		atext.innerHTML = Math.round($scope.amplitude * Math.pow(10, 2)) / Math.pow(10, 2);
+		itext.innerHTML = Math.round($scope.increment * Math.pow(10, 2)) / Math.pow(10, 2);
+	}
+
+	$scope.frequency_up = function () {
+		$scope.frequency += 0.3;
+		$scope.change_text();
+		$scope.createGraph(path);
+	};
+
+	$scope.frequency_down = function () {
+		if($scope.frequency > 0.3) {
+		$scope.frequency -= 0.3;
+		$scope.change_text();
+		$scope.createGraph(path);
+		}
+	};
+
+	$scope.amplitude_up = function () {
+		$scope.amplitude += 0.3;
+		$scope.change_text();
+		$scope.createGraph(path);
+	};
+
+	$scope.amplitude_down = function () {
+		$scope.amplitude -= 0.3;
+		$scope.change_text();
+		$scope.createGraph(path);
+	};
+	
+	$scope.increment_up = function () {
+		$scope.increment += 0.5;
+		$scope.change_text();
+		$scope.createGraph(path);
+	};
+
+	$scope.increment_down = function () {
+		$scope.increment -= 0.5;
+		$scope.change_text();
+		$scope.createGraph(path);
+	};
+});
+    </script>
+</body>
+</html>
