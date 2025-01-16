@@ -25,14 +25,11 @@
             position: relative;
         }
 
-        .iframe-wrapper {
+        .iframe-container .iframe-wrapper {
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .iframe-wrapper iframe {
+        .iframe-container iframe {
             width: 400px;
             height: 100px;
             border: 2px solid rgba(0, 255, 255, 0.5);
@@ -43,36 +40,30 @@
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
-        .iframe-wrapper iframe:hover {
+        .iframe-container iframe:hover {
             transform: scale(1.2);
             z-index: 10;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
-        .iframe-controls {
+        .iframe-container .iframe-controls {
             position: absolute;
-            top: 5px;
-            right: -70px;
+            top: 37px;
+            right: -140px;
             display: flex;
             gap: 5px;
         }
 
-        .iframe-controls button {
+        .iframe-container .iframe-controls button {
             background: none;
             border: none;
             cursor: pointer;
             padding: 5px;
-            color: rgba(0, 255, 255, 0.8);
-            transition: color 0.3s;
         }
 
-        .iframe-controls button:hover {
-            color: rgba(0, 255, 255, 1);
-        }
-
-        .iframe-controls button img {
-            width: 16px;
-            height: 16px;
+        .iframe-container .iframe-controls button img {
+            width: 20px;
+            height: 20px;
         }
 
         .add-button {
@@ -129,6 +120,17 @@
         #linkModal button:hover {
             background-color: rgba(0, 255, 255, 1);
         }
+
+        #quickAddButtons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        #quickAddButtons button {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -136,29 +138,29 @@
         <div class="iframe-wrapper">
             <iframe src="https://widget.mxgic1337.xyz/widget/?player_id=9ab6924a-3a35-4c17-9d2c-da26396af812&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO" title="Iframe 1"></iframe>
             <div class="iframe-controls">
-                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/refresh.png" alt="Reload"></button>
-                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Delete"></button>
+                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Reload"></button>
+                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/trash.png" alt="Delete"></button>
             </div>
         </div>
         <div class="iframe-wrapper">
             <iframe src="https://widget.mxgic1337.xyz/widget/?player_id=3379a21d-8324-412e-8526-4bb5d15399e0&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO" title="Iframe 2"></iframe>
             <div class="iframe-controls">
-                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/refresh.png" alt="Reload"></button>
-                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Delete"></button>
+                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Reload"></button>
+                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/trash.png" alt="Delete"></button>
             </div>
         </div>
         <div class="iframe-wrapper">
             <iframe src="https://widget.mxgic1337.xyz/widget/?player_id=2afbb74c-85a6-45c7-9384-2c1a552174af&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO" title="Iframe 3"></iframe>
             <div class="iframe-controls">
-                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/refresh.png" alt="Reload"></button>
-                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Delete"></button>
+                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Reload"></button>
+                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/trash.png" alt="Delete"></button>
             </div>
         </div>
         <div class="iframe-wrapper">
             <iframe src="https://widget.mxgic1337.xyz/widget/?player_id=bfadfeb3-3762-48c2-8939-2d2d17f4e37f&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO" title="Iframe 4"></iframe>
             <div class="iframe-controls">
-                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/refresh.png" alt="Reload"></button>
-                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Delete"></button>
+                <button onclick="reloadIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Reload"></button>
+                <button onclick="deleteIframe(this)"><img src="https://img.icons8.com/ios-filled/50/ffffff/trash.png" alt="Delete"></button>
             </div>
         </div>
     </div>
@@ -169,6 +171,11 @@
         <button onclick="addIframe()">Add</button>
         <button onclick="hideModal()">Cancel</button>
         <button onclick="openWidgetSite()">Open Widget Site</button>
+        <div id="quickAddButtons">
+            <button onclick="quickAdd('Артем', 'https://widget.mxgic1337.xyz/widget/?player_id=3379a21d-8324-412e-8526-4bb5d15399e0&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO')">Артем</button>
+            <button onclick="quickAdd('Максим', 'https://widget.mxgic1337.xyz/widget/?player_id=2afbb74c-85a6-45c7-9384-2c1a552174af&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO')">Максим</button>
+            <button onclick="quickAdd('Саша', 'https://widget.mxgic1337.xyz/widget/?player_id=bfadfeb3-3762-48c2-8939-2d2d17f4e37f&lang=en&progress=false&avg=false&suffix=false&diff=true&scheme=dark&theme=normal&ranking=0&banner=false&refresh=10&name=true&auto_width=true&only_official=true&stats=KILLS,KD,HSPERCENT,WINRATIO')">Саша</button>
+        </div>
     </div>
 
     <script>
@@ -183,45 +190,52 @@
         function addIframe() {
             const link = document.getElementById('iframeLink').value;
             if (link) {
-                const container = document.querySelector('.iframe-container');
-
-                const wrapper = document.createElement('div');
-                wrapper.className = 'iframe-wrapper';
-
-                const iframe = document.createElement('iframe');
-                iframe.src = link;
-                iframe.title = `Iframe ${container.children.length + 1}`;
-
-                const controls = document.createElement('div');
-                controls.className = 'iframe-controls';
-
-                const reloadButton = document.createElement('button');
-                reloadButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/refresh.png" alt="Reload">';
-                reloadButton.onclick = () => reloadIframe(reloadButton);
-
-                const deleteButton = document.createElement('button');
-                deleteButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Delete">';
-                deleteButton.onclick = () => deleteIframe(deleteButton);
-
-                controls.appendChild(reloadButton);
-                controls.appendChild(deleteButton);
-                wrapper.appendChild(iframe);
-                wrapper.appendChild(controls);
-                container.appendChild(wrapper);
-
+                createIframe(link, `Iframe ${document.querySelectorAll('.iframe-wrapper').length + 1}`);
                 hideModal();
             } else {
                 alert('Please enter a valid URL');
             }
         }
 
+        function quickAdd(title, url) {
+            createIframe(url, title);
+            hideModal();
+        }
+
         function openWidgetSite() {
             window.open('https://widget.mxgic1337.xyz', '_blank');
         }
 
+        function createIframe(url, title) {
+            const container = document.querySelector('.iframe-container');
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('iframe-wrapper');
+
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.title = title;
+
+            const controls = document.createElement('div');
+            controls.classList.add('iframe-controls');
+
+            const reloadButton = document.createElement('button');
+            reloadButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Reload">';
+            reloadButton.onclick = () => iframe.contentWindow.location.reload();
+
+            const deleteButton = document.createElement('button');
+            deleteButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/trash.png" alt="Delete">';
+            deleteButton.onclick = () => wrapper.remove();
+
+            controls.appendChild(reloadButton);
+            controls.appendChild(deleteButton);
+            wrapper.appendChild(iframe);
+            wrapper.appendChild(controls);
+            container.appendChild(wrapper);
+        }
+
         function reloadIframe(button) {
             const iframe = button.closest('.iframe-wrapper').querySelector('iframe');
-            iframe.src = iframe.src;
+            iframe.contentWindow.location.reload();
         }
 
         function deleteIframe(button) {
