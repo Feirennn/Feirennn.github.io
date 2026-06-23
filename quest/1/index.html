@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>❤️ Подсказка ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100dvh;
+    overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+        radial-gradient(circle at top left,
+        rgba(255,182,193,.25),
+        transparent 40%),
+
+        radial-gradient(circle at bottom right,
+        rgba(255,218,185,.25),
+        transparent 40%),
+
+        linear-gradient(135deg,#fffafc,#fff6f7);
+}
+
+.container{
+    width:100%;
+    max-width:450px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+    animation:floatMove 10s ease-in-out infinite;
+}
+
+.title{
+    color:#7a5f68;
+    margin-bottom:18px;
+    font-size:28px;
+    font-weight:600;
+}
+
+.photo{
+    width:90vw;
+    max-width:420px;
+    margin:0 auto;
+    overflow:hidden;
+    border-radius:24px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.12),
+        0 0 35px rgba(255,170,190,.25);
+
+    animation:breathe 5s ease-in-out infinite;
+    cursor:pointer;
+}
+
+.photo img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.hint{
+    margin-top:22px;
+    color:#6e5860;
+    font-size:17px;
+    opacity:.85;
+}
+
+.secret{
+    margin-top:18px;
+    padding:14px 18px;
+    border-radius:16px;
+
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(10px);
+
+    color:#7a5f68;
+    line-height:1.5;
+
+    opacity:0;
+    transform:translateY(10px);
+    transition:.6s;
+}
+
+.secret.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:rgba(255,105,135,.18);
+    pointer-events:none;
+    user-select:none;
+    animation:rise linear forwards;
+}
+
+@keyframes breathe{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.03);
+    }
+}
+
+@keyframes floatMove{
+    0%,100%{
+        transform:translate(0,0);
+    }
+    25%{
+        transform:translate(8px,-8px);
+    }
+    50%{
+        transform:translate(0,-15px);
+    }
+    75%{
+        transform:translate(-8px,-6px);
+    }
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+@media(max-width:500px){
+
+    .title{
+        font-size:24px;
+    }
+
+    .hint{
+        font-size:16px;
+    }
+
+    .secret{
+        font-size:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="title">
+        ❤️ Следующая подсказка ❤️
+    </div>
+
+    <div class="photo" onclick="showHint()">
+        <!-- ЗАМЕНИ ССЫЛКУ НИЖЕ НА СВОЁ ФОТО -->
+        <img src="photo.jpg" alt="Подсказка">
+    </div>
+
+    <div class="hint">
+        Нажми на фотографию ✨
+    </div>
+
+    <div class="secret" id="secret">
+        ❤️ Ты уже совсем близко...<br><br>
+        Посмотри туда, где вас ждут тёплые воспоминания.
+    </div>
+
+</div>
+
+<script>
+function showHint(){
+    document.getElementById('secret').classList.add('show');
+}
+
+function createHeart(){
+
+    const heart = document.createElement('div');
+
+    heart.className = 'heart';
+    heart.innerHTML = '❤';
+
+    heart.style.left = Math.random()*100 + 'vw';
+
+    heart.style.fontSize =
+        (14 + Math.random()*28) + 'px';
+
+    heart.style.animationDuration =
+        (8 + Math.random()*7) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },15000);
+}
+
+setInterval(createHeart,1200);
+</script>
+
+</body>
+</html>
+
