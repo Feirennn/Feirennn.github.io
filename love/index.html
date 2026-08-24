@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<title>Для моей Звёздочки ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #eadfce;
+    --paper: #fffaf2;
+    --text: #3c302c;
+    --muted: #806f64;
+    --shadow: rgba(67, 49, 39, .18);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(255,255,255,.45),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(255,255,255,.25),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        "Manrope",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   ПЛАВАЮЩИЕ СЕРДЕЧКИ
+========================================= */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -30px;
+
+    color: rgba(125, 83, 76, .28);
+
+    font-size: 13px;
+
+    animation:
+        floatHeart linear infinite;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            rotate(0deg)
+            scale(.8);
+
+        opacity: 0;
+    }
+
+    12% {
+        opacity: .45;
+    }
+
+    50% {
+        transform:
+            translate3d(18px, -50vh, 0)
+            rotate(18deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate3d(-14px, -112vh, 0)
+            rotate(-18deg)
+            scale(.8);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   ПЕРВАЯ СТРАНИЦА
+========================================= */
+
+.intro {
+
+    position: relative;
+    z-index: 1;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px 28px;
+
+    text-align: center;
+}
+
+.intro-inner {
+
+    max-width: 340px;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        introIn 1.4s .2s ease forwards;
+}
+
+@keyframes introIn {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.kicker {
+
+    font-size: 10px;
+
+    letter-spacing: .32em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+
+    margin-bottom: 14px;
+}
+
+.intro h1 {
+
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 49px;
+
+    line-height: .95;
+
+    font-weight: 500;
+}
+
+.intro-subtitle {
+
+    margin:
+        22px
+        auto
+        0;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: var(--muted);
+}
+
+.scroll-hint {
+
+    margin-top: 55px;
+
+    font-size: 11px;
+
+    letter-spacing: .08em;
+
+    color: var(--muted);
+
+    animation:
+        hint 2.2s ease-in-out infinite;
+}
+
+.scroll-arrow {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 18px;
+}
+
+@keyframes hint {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .55;
+    }
+
+    50% {
+        transform: translateY(7px);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
+   ИСТОРИЯ
+========================================= */
+
+.story {
+
+    position: relative;
+
+    z-index: 1;
+
+    scroll-snap-type: y proximity;
+}
+
+
+/* =========================================
+   СЦЕНА
+========================================= */
+
+.scene {
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    padding:
+        60px
+        22px;
+
+    scroll-snap-align: start;
+}
+
+
+/* =========================================
+   ОБЁРТКА КАРТОЧКИ
+========================================= */
+
+.card-wrap {
+
+    width: min(86vw, 355px);
+
+    perspective: 1200px;
+
+    opacity: 0;
+
+    transform:
+        translateY(45px)
+        scale(.96);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.75,.2,1);
+}
+
+.scene.visible .card-wrap {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================
+   КАРТОЧКА
+========================================= */
+
+.card {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .85s cubic-bezier(.18,.78,.22,1);
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+.card.flipped {
+
+    transform:
+        rotateY(180deg);
+}
+
+
+/* =========================================
+   СТОРОНЫ КАРТОЧКИ
+========================================= */
+
+.face {
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 19px;
+
+    overflow: hidden;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    box-shadow:
+        0 25px 60px var(--shadow),
+        0 3px 8px rgba(67,49,39,.08);
+}
+
+
+/* =========================================
+   ЛИЦЕВАЯ СТОРОНА
+========================================= */
+
+.front {
+
+    background: #d5c7b7;
+}
+
+.front img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.front::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(28,18,14,.28),
+            transparent 34%
+        );
+
+    pointer-events: none;
+}
+
+.front-label {
+
+    position: absolute;
+
+    z-index: 2;
+
+    bottom: 17px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        8px
+        13px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,250,242,.82);
+
+    backdrop-filter:
+        blur(8px);
+
+    color: #4b3c35;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
+}
+
+
+/* =========================================
+   ОБРАТНАЯ СТОРОНА
+========================================= */
+
+.back {
+
+    transform:
+        rotateY(180deg);
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,.8),
+            transparent 30%
+        ),
+        var(--paper);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        31px
+        27px;
+}
+
+.back::before,
+.back::after {
+
+    content: "♡";
+
+    position: absolute;
+
+    color:
+        rgba(130, 90, 80, .18);
+
+    font-size: 24px;
+}
+
+.back::before {
+
+    top: 17px;
+    left: 21px;
+}
+
+.back::after {
+
+    bottom: 14px;
+    right: 21px;
+}
+
+.card-number {
+
+    font-size: 9px;
+
+    letter-spacing: .3em;
+
+    color: #a28f82;
+
+    margin-bottom: 20px;
+}
+
+.card-title {
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 27px;
+
+    font-weight: 500;
+
+    margin:
+        0
+        0
+        18px;
+}
+
+.card-text {
+
+    white-space: pre-line;
+
+    font-size: 13.5px;
+
+    line-height: 1.85;
+
+    color: #554640;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   ПОДСКАЗКИ
+========================================= */
+
+.continue {
+
+    position: absolute;
+
+    bottom: 24px;
+
+    font-size: 10px;
+
+    letter-spacing: .12em;
+
+    color: var(--muted);
+
+    opacity: .55;
+}
+
+.first-hint {
+
+    position: absolute;
+
+    top:
+        calc(100% + 16px);
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+    animation:
+        softPulse 2s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+
+    0%,100% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   ПОСЛЕДНЯЯ ЧЁРНАЯ КАРТОЧКА
+========================================= */
+
+.final .card {
+
+    aspect-ratio: 3 / 4;
+}
+
+.final-front {
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            #292424 0,
+            #161414 32%,
+            #0c0b0b 72%
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+}
+
+.final-front::before {
+
+    content: "♡";
+
+    position: absolute;
+
+    top: 27%;
+
+    font-size: 18px;
+
+    opacity: .3;
+}
+
+.final-title {
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 31px;
+
+    line-height: 1.15;
+
+    font-weight: 400;
+
+    letter-spacing: .02em;
+
+    max-width: 250px;
+}
+
+.final-hint {
+
+    position: absolute;
+
+    bottom: 28px;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+
+    opacity: .4;
+}
+
+.final-back {
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,.08),
+            transparent 35%
+        ),
+        #151313;
+
+    color: #f5eee4;
+}
+
+.final-back::before,
+.final-back::after {
+
+    color:
+        rgba(255,255,255,.15);
+}
+
+.final-back .card-number {
+
+    color:
+        rgba(255,255,255,.35);
+}
+
+.final-back .card-text {
+
+    color: #eee5db;
+
+    font-size: 13.2px;
+
+    line-height: 1.9;
+}
+
+.highlight {
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    letter-spacing: .04em;
+
+    color: #fffaf2;
+}
+
+.final-heart {
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-size: 22px;
+}
+
+
+/* =========================================
+   ФИНАЛ ПОСЛЕ КАРТОЧЕК
+========================================= */
+
+.ending {
+
+    min-height: 65svh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding:
+        60px
+        30px
+        100px;
+}
+
+.ending p {
+
+    max-width: 280px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    color:
+        rgba(60,48,44,.65);
+}
+
+
+/* =========================================
+   МАЛЕНЬКИЕ ЭКРАНЫ
+========================================= */
+
+@media (max-width: 360px) {
+
+    .card-wrap {
+
+        width: 88vw;
+    }
+
+    .back {
+
+        padding:
+            25px
+            22px;
+    }
+
+    .card-text {
+
+        font-size: 12.5px;
+
+        line-height: 1.7;
+    }
+
+    .final-back .card-text {
+
+        font-size: 12.2px;
+    }
+}
+
+
+/* =========================================
+   ЕСЛИ У ПОЛЬЗОВАТЕЛЯ ОТКЛЮЧЕНЫ АНИМАЦИИ
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     СЕРДЕЧКИ
+===================================== -->
+
+<div
+    class="hearts"
+    aria-hidden="true">
+</div>
+
+
+
+<!-- =====================================
+     ВСТУПЛЕНИЕ
+===================================== -->
+
+<section class="intro">
+
+    <div class="intro-inner">
+
+        <div class="kicker">
+            маленькая история
+        </div>
+
+        <h1>
+            Для моей<br>
+            Звёздочки ♡
+        </h1>
+
+        <p class="intro-subtitle">
+            Иногда несколько месяцев могут<br>
+            изменить целую жизнь.
+        </p>
+
+        <div class="scroll-hint">
+
+            листай вниз
+
+            <span class="scroll-arrow">
+                ↓
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     КАРТОЧКИ
+===================================== -->
+
+<main class="story">
+
+
+    <!-- =================================
+         КАРТОЧКА 1
+    ================================== -->
+
+    <section class="scene">
+
+        <div class="card-wrap">
+
+            <div
+                class="card"
+                tabindex="0"
+                role="button"
+                aria-label="Открыть первую карточку"
+            >
+
+                <div class="face front">
+
+                    <img
+                        src="img1.jpg"
+                        alt="Наша фотография"
+                    >
+
+                    <div class="front-label">
+                        нажми на меня ♡
+                    </div>
+
+                </div>
+
+
+                <div class="face back">
+
+                    <div class="card-number">
+                        01 / 06
+                    </div>
+
+                    <h2 class="card-title">
+                        Дорогая моя, Звёздочка.
+                    </h2>
+
+                    <p class="card-text">Ты подарила моей жизни то, чего я никогда не имел — смысл и желание жить.
+
+С твоим появлением в моей жизни в моих глазах заиграли краски, которых не было слишком долго.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="first-hint">
+                прикоснись, чтобы перевернуть
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         КАРТОЧКА 2
+    ================================== -->
+
+    <section class="scene">
+
+        <div class="card-wrap">
+
+            <div
+                class="card"
+                tabindex="0"
+                role="button"
+                aria-label="Открыть вторую карточку"
+            >
+
+                <div class="face front">
+
+                    <img
+                        src="img2.jpg"
+                        alt="Наша фотография"
+                    >
+
+                    <div class="front-label">
+                        нажми на меня ♡
+                    </div>
+
+                </div>
+
+
+                <div class="face back">
+
+                    <div class="card-number">
+                        02 / 06
+                    </div>
+
+                    <h2 class="card-title">
+                        Всё началось внезапно
+                    </h2>
+
+                    <p class="card-text">Наше знакомство было крайне внезапным
+
+и таким удачным поворотом в моей жизни.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="continue">
+            продолжай ↓
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         КАРТОЧКА 3
+    ================================== -->
+
+    <section class="scene">
+
+        <div class="card-wrap">
+
+            <div
+                class="card"
+                tabindex="0"
+                role="button"
+                aria-label="Открыть третью карточку"
+            >
+
+                <div class="face front">
+
+                    <img
+                        src="img3.jpg"
+                        alt="Наша фотография"
+                    >
+
+                    <div class="front-label">
+                        нажми на меня ♡
+                    </div>
+
+                </div>
+
+
+                <div class="face back">
+
+                    <div class="card-number">
+                        03 / 06
+                    </div>
+
+                    <h2 class="card-title">
+                        Те самые слова
+                    </h2>
+
+                    <p class="card-text">Ты была той, кто сделал тот шаг, который сблизил нас.
+
+Ты — та, кто сказала те самые слова, которые вызвали в моей голове такую бурю эмоций.
+
+<span style="display:block;margin-top:16px;font-family:'Cormorant Garamond',Georgia,serif;font-size:29px;">«Я люблю тебя»</span></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="continue">
+            продолжай ↓
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         КАРТОЧКА 4
+    ================================== -->
+
+    <section class="scene">
+
+        <div class="card-wrap">
+
+            <div
+                class="card"
+                tabindex="0"
+                role="button"
+                aria-label="Открыть четвертую карточку"
+            >
+
+                <div class="face front">
+
+                    <img
+                        src="img4.jpg"
+                        alt="Наша фотография"
+                    >
+
+                    <div class="front-label">
+                        нажми на меня ♡
+                    </div>
+
+                </div>
+
+
+                <div class="face back">
+
+                    <div class="card-number">
+                        04 / 06
+                    </div>
+
+                    <h2 class="card-title">
+                        Наш дом
+                    </h2>
+
+                    <p class="card-text">Решение съехаться было лучшим, которое я мог принять.
+
+Ведь теперь каждый мой день проходит в присутствии тебя.
+
+Мы разделяем наше время, проводим его вместе и просто любим друг друга.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="continue">
+            продолжай ↓
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         КАРТОЧКА 5
+    ================================== -->
+
+    <section class="scene">
+
+        <div class="card-wrap">
+
+            <div
+                class="card"
+                tabindex="0"
+                role="button"
+                aria-label="Открыть пятую карточку"
+            >
+
+                <div class="face front">
+
+                    <img
+                        src="img5.jpg"
+                        alt="Наша фотография"
+                    >
+
+                    <div class="front-label">
+                        нажми на меня ♡
+                    </div>
+
+                </div>
+
+
+                <div class="face back">
+
+                    <div class="card-number">
+                        05 / 06
+                    </div>
+
+                    <h2 class="card-title">
+                        Спасибо тебе
+                    </h2>
+
+                    <p class="card-text">Я тебя очень люблю.
+
+И готов повторять это всю свою жизнь.
+
+Спасибо тебе за то, что ты рядом и даришь мне свою любовь.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="continue">
+            ещё одна ↓
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         КАРТОЧКА 6 — ФИНАЛ
+    ================================== -->
+
+    <section class="scene final">
+
+        <div class="card-wrap">
+
+            <div
+                class="card"
+                tabindex="0"
+                role="button"
+                aria-label="Открыть последнюю карточку"
+            >
+
+                <!-- ЧЁРНАЯ СТОРОНА -->
+
+                <div class="face front final-front">
+
+                    <div class="final-title">
+                        Продолжение<br>
+                        следует...
+                    </div>
+
+                    <div class="final-hint">
+                        нажми ♡
+                    </div>
+
+                </div>
+
+
+                <!-- ФИНАЛЬНЫЙ ТЕКСТ -->
+
+                <div class="face back final-back">
+
+                    <div class="card-number">
+                        06 / 06
+                    </div>
+
+                    <p class="card-text">
+
+                        Никто не знает, что будет впереди.
+
+                        Но я твёрдо убеждён, что буду делать всё, чтобы в будущем возле меня всегда была
+
+                        <span class="highlight">
+                            ТЫ
+                        </span>
+
+                        Я тебя люблю.
+
+                        <span class="final-heart">
+                            ❤️
+                        </span>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     ПОСЛЕ ИСТОРИИ
+===================================== -->
+
+<section class="ending">
+
+    <p>
+        И это только начало нашей истории. ♡
+    </p>
+
+</section>
+
+
+
+<script>
+
+/* =========================================
+   СОЗДАНИЕ ПЛАВАЮЩИХ СЕРДЕЧЕК
+========================================= */
+
+const hearts =
+    document.querySelector(".hearts");
+
+const heartSymbols =
+    ["♡", "♡", "♥", "♡", "♡"];
+
+
+for (let i = 0; i < 24; i++) {
+
+    const heart =
+        document.createElement("span");
+
+    heart.className =
+        "heart";
+
+    heart.textContent =
+        heartSymbols[
+            Math.floor(
+                Math.random() *
+                heartSymbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (9 + Math.random() * 12) + "px";
+
+    heart.style.animationDuration =
+        (10 + Math.random() * 13) + "s";
+
+    heart.style.animationDelay =
+        (-Math.random() * 22) + "s";
+
+    hearts.appendChild(heart);
+}
+
+
+
+/* =========================================
+   ПЕРЕВОРОТ КАРТОЧЕК
+========================================= */
+
+document
+    .querySelectorAll(".card")
+    .forEach(card => {
+
+        const flip = () => {
+
+            card.classList.toggle(
+                "flipped"
+            );
+
+        };
+
+
+        card.addEventListener(
+            "click",
+            flip
+        );
+
+
+        card.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    flip();
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+/* =========================================
+   ПОЯВЛЕНИЕ КАРТОЧЕК ПРИ СКРОЛЛЕ
+========================================= */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.25
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".scene")
+    .forEach(scene => {
+
+        observer.observe(scene);
+
+    });
+
+
+
+/* =========================================
+   УБИРАЕМ ПЕРВУЮ ПОДСКАЗКУ
+========================================= */
+
+const firstCard =
+    document.querySelector(
+        ".scene .card"
+    );
+
+const firstHint =
+    document.querySelector(
+        ".first-hint"
+    );
+
+
+firstCard.addEventListener(
+
+    "click",
+
+    () => {
+
+        firstHint.style.transition =
+            "opacity .4s ease";
+
+        firstHint.style.opacity =
+            "0";
+
+
+        setTimeout(
+            () => firstHint.remove(),
+            500
+        );
+
+    },
+
+    {
+        once: true
+    }
+
+);
+
+</script>
+
+</body>
+</html>
